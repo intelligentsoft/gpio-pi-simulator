@@ -1,7 +1,9 @@
 express = require 'express'
 glob = require 'glob'
+logger = require 'morgan'
 
 module.exports = (app, config) ->
+  app.use logger 'dev'
   app.set 'views', config.root + '/views'
   app.engine 'html', require('ejs').renderFile
   app.set 'view engine', 'html'
@@ -28,6 +30,7 @@ module.exports = (app, config) ->
   if app.get('env') == 'development'
     app.use (err, req, res, next) ->
       res.status err.status || 500
+      console.log err.stack
       res.render 'error',
         message: err.message
         error: err

@@ -1,8 +1,7 @@
-<html>
-  <head>
-    <title></title>
-  </head>
-  <body>
-    error
-  </body>
-</html>
+<% include header %>
+
+  <%- message %>
+  <%- error.status %>
+  <%- error.stack %>
+
+<% include footer %>

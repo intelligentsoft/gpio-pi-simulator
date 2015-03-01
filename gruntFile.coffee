@@ -30,8 +30,6 @@ module.exports = (grunt) ->
           nodeArgs: ['--debug'],
           ext: 'js',
           watch: ['bin/server', 'gruntFile.coffee'],
-          delay: 1000,
-
     concurrent:
       tasks: ['nodemon', 'watch']
       options:
@@ -43,11 +41,29 @@ module.exports = (grunt) ->
           'app.coffee'
         ]
         tasks: ['coffee']
-    copy:
-      main:
+      views:
         files: [
-          {expand: true,flatten: true, src: ['server/views/*'], dest: 'bin/server/views/', filter: 'isFile'},
+          'server/views/*'
         ]
+        tasks: ['copy']
+      html:
+        files: 'bin/server/views/**',
+        options:
+          livereload: true,
+          interval: 500
+    copy:
+      views:
+        files: [
+          expand: true
+          flatten: true
+          src: ['server/views/*']
+          dest: 'bin/server/views/'
+          filter: 'isFile'
+        ]
+    stylus:
+      dist:
+        files:
+          'bin/public/assets/css/foo.css': 'public/assets/css/**/*.styl'
 
   grunt.initConfig config
 
@@ -59,5 +75,6 @@ module.exports = (grunt) ->
       'clean'
       'coffee'
       'copy'
+      'stylus'
       'concurrent'
     ]
