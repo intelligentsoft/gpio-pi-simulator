@@ -5,9 +5,12 @@ logger = require 'morgan'
 module.exports = (app, config) ->
   app.use logger 'dev'
   app.set 'views', config.root + '/views'
-  app.engine 'html', require('ejs').renderFile
-  app.set 'view engine', 'html'
-  app.use express.static config.root + '/public'
+
+  app.engine 'jade', require('jade').__express
+  app.set 'view engine', 'jade'
+
+  app.use express.static config.root + '/../public'
+  app.use express.static config.root + '/../../bower_components'
 
   models = glob.sync config.root + '/models/**/*.js'
   models.forEach (model) ->

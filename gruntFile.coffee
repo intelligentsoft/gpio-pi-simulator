@@ -43,9 +43,14 @@ module.exports = (grunt) ->
         tasks: ['coffee']
       views:
         files: [
-          'server/views/*'
+          'server/views/**/*'
         ]
         tasks: ['copy']
+      stylus:
+        files: [
+          'public/assets/css/**/*'
+        ]
+        tasks: ['stylus']
       html:
         files: 'bin/server/views/**',
         options:
@@ -63,7 +68,7 @@ module.exports = (grunt) ->
     stylus:
       dist:
         files:
-          'bin/public/assets/css/foo.css': 'public/assets/css/**/*.styl'
+          'bin/public/assets/css/style.css': 'public/assets/css/**/*.styl'
 
   grunt.initConfig config
 
