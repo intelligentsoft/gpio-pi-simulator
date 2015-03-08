@@ -6,8 +6,8 @@ module.exports = (app, config) ->
   app.use logger 'dev'
   app.set 'views', config.root + '/views'
 
-  app.engine 'jade', require('jade').__express
-  app.set 'view engine', 'jade'
+  app.engine 'html', require('ejs').renderFile
+  app.set 'view engine', 'ejs'
 
   app.use express.static config.root + '/../public'
   app.use express.static config.root + '/../../bower_components'
