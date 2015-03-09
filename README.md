@@ -5,12 +5,14 @@
 * *Node.js*
 * *Git*
 
-* Grunt
-
+## Tecnologies
+* grunt | express | nodejs | angular | coffeescript | mongodb | bootstrap | stylus
 
 ## Installation
 
 ```
 $ npm install
 $ bower install
+
+$ grunt dev
 ```
