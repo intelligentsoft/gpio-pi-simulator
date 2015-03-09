@@ -19,9 +19,9 @@ module.exports = (app, config) ->
   models.forEach (model) ->
     require(model)
 
-  controllers = glob.sync config.root + '/controllers/**/*.js'
-  controllers.forEach (controller) ->
-    require(controller)(app)
+  routes = glob.sync config.root + '/routes/**/*.js'
+  routes.forEach (route) ->
+    require(route)(app)
 
   # catch 404 and forward to error handler
   app.use (req, res, next) ->

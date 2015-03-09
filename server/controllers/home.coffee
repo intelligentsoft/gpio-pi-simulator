@@ -1,13 +1,7 @@
-express  = require 'express'
-router = express.Router()
-mongoose = require 'mongoose'
 glob = require 'glob'
 config = require '../config/config'
-
-module.exports = (app) ->
-  app.use '/', router
-
-router.get '/', (req, res, next) ->
+#
+exports.home = (req, res, next) ->
 
   # Libs
   cssFiles = [
