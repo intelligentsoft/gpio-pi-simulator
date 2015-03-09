@@ -1,6 +1,6 @@
 'use strict'
 
 angular.module('seedApp')
-.controller 'HomeController', ['$scope',
+.controller 'MainController', ['$scope',
   ($scope) ->
 ]

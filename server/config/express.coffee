@@ -1,8 +1,11 @@
 express = require 'express'
 glob = require 'glob'
 logger = require 'morgan'
+favicon = require 'serve-favicon'
 
 module.exports = (app, config) ->
+  app.use(favicon(config.root + '/../public/assets/img/favicon.ico'))
+
   app.use logger 'dev'
   app.set 'views', config.root + '/views'
 
@@ -34,16 +37,15 @@ module.exports = (app, config) ->
     app.use (err, req, res, next) ->
       res.status err.status || 500
       console.log err.stack
-      res.render 'error',
+      res.json
         message: err.message
         error: err
-        title: 'error'
 
   # production error handler
   # no stacktraces leaked to user
   app.use (err, req, res, next) ->
     res.status err.status || 500
     res.render 'error',
-      message: err.message
-      error: {}
-      title: 'error'
+      res.json
+        message: err.message
+        error: err
