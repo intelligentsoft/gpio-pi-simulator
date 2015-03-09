@@ -41,6 +41,16 @@ module.exports = (grunt) ->
           'app.coffee'
         ]
         tasks: ['coffee']
+      public:
+        files: [
+          'public/**/*.coffee'
+        ]
+        tasks: ['coffee:public']
+      publicViews:
+        files: [
+          'public/views/**/*'
+        ]
+        tasks: ['copy:public']
       views:
         files: [
           'server/views/**/*'
@@ -51,18 +61,50 @@ module.exports = (grunt) ->
           'public/assets/css/**/*'
         ]
         tasks: ['stylus']
-      html:
-        files: 'bin/server/views/**',
+      htmlserver:
+        files: [
+          'bin/server/views/**'
+          'bin/public/views/**'
+        ]
         options:
           livereload: true,
           interval: 500
+
     copy:
-      views:
+      server:
         files: [
           expand: true
           flatten: true
           src: ['server/views/*']
           dest: 'bin/server/views/'
+          filter: 'isFile'
+        ]
+      public:
+        files: [
+          expand: true
+          flatten: true
+          src: ['public/views/*']
+          dest: 'bin/public/views/'
+          filter: 'isFile'
+        ]
+      static:
+        files: [
+          expand: true
+          flatten: true
+          src: [
+            'public/assets/static/*'
+          ]
+          dest: 'bin/public/assets/static/'
+          filter: 'isFile'
+        ]
+      images:
+        files: [
+          expand: true
+          flatten: true
+          src: [
+            'public/assets/img/*'
+          ]
+          dest: 'bin/public/assets/img/'
           filter: 'isFile'
         ]
     stylus:
