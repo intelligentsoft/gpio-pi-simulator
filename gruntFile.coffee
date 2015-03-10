@@ -40,31 +40,31 @@ module.exports = (grunt) ->
           'server/**/*.coffee'
           'app.coffee'
         ]
-        tasks: ['coffee']
+        tasks: ['newer:coffee']
       public:
         files: [
           'public/**/*.coffee'
         ]
-        tasks: ['coffee:public']
+        tasks: ['newer:coffee:public']
       publicViews:
         files: [
           'public/views/**/*'
         ]
-        tasks: ['copy:public']
-      views:
+        tasks: ['newer:copy:public']
+      serverViews:
         files: [
           'server/views/**/*'
         ]
-        tasks: ['copy']
+        tasks: ['newer:copy']
       stylus:
         files: [
           'public/assets/css/**/*'
         ]
-        tasks: ['stylus']
+        tasks: ['newer:stylus']
       htmlserver:
         files: [
           'bin/server/views/**'
-          'bin/public/views/**'
+          'bin/public/**'
         ]
         options:
           livereload: true,

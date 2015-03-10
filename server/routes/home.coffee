@@ -1,6 +1,6 @@
 'use strict';
 
-controller = require('../controllers/home')
+controller = require '../controllers/home'
 
 module.exports = (app) ->
 

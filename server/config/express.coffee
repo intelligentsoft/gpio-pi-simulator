@@ -4,7 +4,7 @@ logger = require 'morgan'
 favicon = require 'serve-favicon'
 
 module.exports = (app, config) ->
-  app.use(favicon(config.root + '/../public/assets/img/favicon.ico'))
+  app.use favicon config.root + '/../public/assets/img/favicon.ico'
 
   app.use logger 'dev'
   app.set 'views', config.root + '/views'
