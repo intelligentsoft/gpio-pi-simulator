@@ -6,16 +6,16 @@ config =
   development:
     root: rootPath
     port: 3000
-    db: 'mongodb://localhost/seed-development'
+    db: 'mongodb://localhost/pi-development'
 
   test:
     root: rootPath
     port: 3000
-    db: 'mongodb://localhost/seed-test'
+    db: 'mongodb://localhost/pi-test'
 
   production:
     root: rootPath
     port: 3000
-    db: 'mongodb://localhost/seed-production'
+    db: 'mongodb://localhost/pi-production'
 
 module.exports = config[env]
