@@ -13,6 +13,7 @@ exports.home = (req, res, next) ->
     '/angular-resource/angular-resource.js'
     '/angular-route/angular-route.js'
     '/angular-ui-router/release/angular-ui-router.js'
+    '/lodash/lodash.js'
   ]
 
   # Filtering paths
