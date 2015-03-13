@@ -1,4 +1,4 @@
-# COFFEE SCRIPTS SEED
+# GPIO-Raspberry Pi - Simulator
 
 ## Prerequisites
 * *MongoDB*
